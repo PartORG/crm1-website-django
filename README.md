@@ -1,41 +1,34 @@
 # CRM1 Website Django
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+A customer-product management website created in Python/Django.
 
-A robust, scalable CRM platform built with Django to manage customer relationships effectively.
-
-## Features
-
-- 🔧 **Scalable API**: RESTful API for customer management.
-- 🎨 **User-Friendly Interface**: Responsive design for improved user experience.
-- 🔒 **Secure Authentication**: Implement robust authentication and authorization.
-- 🗃️ **Database Integration**: Built-in support for PostgreSQL.
-- 📊 **Reporting**: Generate reports on customer data and interactions.
-- ⚙️ **Customizable**: Easily extendable and customizable to fit specific needs.
-- 🛠️ **Automated Tests**: Comprehensive test suite to ensure software quality.
-
-## Tech Stack
-
-| Technology  | Purpose                           |
-|-------------|-----------------------------------|
-| Python      | Core programming language         |
-| Django      | Web framework                      |
-| PostgreSQL  | Database management                |
-| Django REST Framework | API development |
-| Docker      | Containerization                  |
-| Git         | Version control                   |
-
-## Quick Start
-
-### Prerequisites
+## Requirements
 
 - Python 3.8+
 - PostgreSQL
-- Docker (optional, for containerization)
+- asgiref==3.2.7
+- boto3==1.14.20
+- botocore==1.17.20
+- certifi==2020.4.5.1
+- Django==3.0.7
+- django-filter==2.3.0
+- django-storages==1.9.1
+- djangorestframework==3.11.0
+- docutils==0.15.2
+- gunicorn==20.0.4
+- jmespath==0.10.0
+- Pillow==7.1.2
+- psycopg2==2.8.5
+- python-dateutil==2.8.1
+- pytz==2020.1
+- s3transfer==0.3.3
+- six==1.15.0
+- sqlparse==0.3.1
+- urllib3==1.25.9
+- whitenoise==5.1.0
+- wincertstore==0.2
 
-### Installation Steps
+## Installation
 
 1. **Clone the repository:**
 
@@ -64,48 +57,68 @@ A robust, scalable CRM platform built with Django to manage customer relationshi
 4. **Run Migrations:**
 
    ```bash
-   python src/manage.py migrate
+   python manage.py migrate
    ```
 
 5. **Start the server:**
 
    ```bash
-   python src/manage.py runserver
+   python manage.py runserver
    ```
 
 ## Usage
 
-To start the application and access the core API functionalities, a simple interactive session can be initiated:
+To start the application and access the core functionalities, use the following command:
 
-```python
-from src.api import customer_api
-
-# Creating a customer
-customer_api.create_customer(name="John Doe", email="john.doe@example.com")
-
-# Fetching customer information
-customer = customer_api.get_customer(email="john.doe@example.com")
-print(customer)
+```bash
+python manage.py runserver
 ```
+
+This will start the Django development server on `http://127.0.0.1:8000/`. You can then navigate to this URL in your web browser to interact with the CRM platform.
 
 ## Project Structure
 
 ```plaintext
 crm1-website-django/
-├── src/
-│   ├── main.py                 # Entry point for the application
-│   ├── api/                    # API endpoints
-│   └── models/                 # Database models
-├── tests/                      # Test cases
-├── requirements.txt            # Dependency list
-├── setup.py                    # Package setup
-├── README.md                   # Project documentation
-└── .env                        # Environment variables
+├── manage.py
+├── accounts/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── decorators.py
+│   ├── filters.py
+│   ├── forms.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── signals.py
+│   ├── templates/
+│   │   └── accounts/
+│   │       ├── account_settings.html
+│   │       ├── customer.html
+│   │       ├── dashboard.html
+│   │       ├── delete.html
+│   │       ├── login.html
+│   │       ├── main.html
+│   │       ├── navbar.html
+│   │       ├── order_form.html
+│   │       ├── password_reset.html
+│   │       ├── password_reset_done.html
+│   │       ├── password_reset_form.html
+│   │       ├── password_reset_sent.html
+│   │       ├── products.html
+│   │       ├── register.html
+│   │       └── status.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── crm1/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── requirements.txt
 ```
-
-## API Reference
-
-For detailed documentation on each API endpoint, refer to [API Reference](src/api/README.md).
 
 ## Contributing
 
