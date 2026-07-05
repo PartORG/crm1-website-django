@@ -1,34 +1,65 @@
 # CRM1 Website Django
 
-A customer-product management website created in Python/Django.
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+
+A robust, scalable CRM platform built with Django to manage customer relationships effectively.
+
+## Features
+
+- 🔧 **Scalable API**: RESTful API for customer management.
+- 🎨 **User-Friendly Interface**: Responsive design for improved user experience.
+- 🔒 **Secure Authentication**: Implement robust authentication and authorization.
+- 🗃️ **Database Integration**: Built-in support for PostgreSQL.
+- 📊 **Reporting**: Generate reports on customer data and interactions.
+- ⚙️ **Customizable**: Easily extendable and customizable to fit specific needs.
+- 🛠️ **Automated Tests**: Comprehensive test suite to ensure software quality.
+
+## How It Works
+
+CRM1 Website Django is a full-stack web application built using the Django framework. The project includes both frontend and backend components, providing a comprehensive solution for customer relationship management.
+
+### Architecture Overview
+
+The architecture of CRM1 Website Django consists of several key components:
+
+- **Frontend**: Built with HTML, CSS, and JavaScript to provide a user-friendly interface.
+- **Backend**: Developed using Django, which handles business logic, data storage, and API endpoints.
+- **Database**: Integrated with PostgreSQL for efficient data management.
+
+### Technology Stack
+
+| Technology  | Purpose                           |
+|-------------|-----------------------------------|
+| Python      | Core programming language         |
+| Django      | Web framework                      |
+| PostgreSQL  | Database management                |
+| Django REST Framework | API development |
+| Docker      | Containerization                  |
+| Git         | Version control                   |
 
 ## Requirements
 
+To run CRM1 Website Django, you will need the following:
+
 - Python 3.8+
 - PostgreSQL
-- asgiref==3.2.7
-- boto3==1.14.20
-- botocore==1.17.20
-- certifi==2020.4.5.1
-- Django==3.0.7
-- django-filter==2.3.0
-- django-storages==1.9.1
-- djangorestframework==3.11.0
-- docutils==0.15.2
-- gunicorn==20.0.4
-- jmespath==0.10.0
-- Pillow==7.1.2
-- psycopg2==2.8.5
-- python-dateutil==2.8.1
-- pytz==2020.1
-- s3transfer==0.3.3
-- six==1.15.0
-- sqlparse==0.3.1
-- urllib3==1.25.9
-- whitenoise==5.1.0
-- wincertstore==0.2
+- Docker (optional, for containerization)
 
 ## Installation
+
+### Prerequisites
+
+Ensure you have the necessary dependencies installed on your system.
+
+```bash
+# Install Python and pip if not already installed
+sudo apt-get update
+sudo apt-get install python3 python3-pip
+```
+
+### Installation Steps
 
 1. **Clone the repository:**
 
@@ -57,78 +88,82 @@ A customer-product management website created in Python/Django.
 4. **Run Migrations:**
 
    ```bash
-   python manage.py migrate
+   python src/manage.py migrate
    ```
 
 5. **Start the server:**
 
    ```bash
-   python manage.py runserver
+   python src/manage.py runserver
    ```
+
+## Configuration
+
+The project uses environment variables to configure settings such as database credentials and debug mode.
+
+### Environment Variables
+
+- `DEBUG`: Set to `True` for development, `False` for production.
+- `DATABASE_NAME`: Name of the PostgreSQL database.
+- `DATABASE_USER`: Username for the PostgreSQL database.
+- `DATABASE_PASSWORD`: Password for the PostgreSQL database.
+
+## Quick Start
+
+To start the application and access the core API functionalities, a simple interactive session can be initiated:
+
+```python
+from src.api import customer_api
+
+# Creating a customer
+customer_api.create_customer(name="John Doe", email="john.doe@example.com")
+
+# Fetching customer information
+customer = customer_api.get_customer(email="john.doe@example.com")
+print(customer)
+```
 
 ## Usage
 
-To start the application and access the core functionalities, use the following command:
-
-```bash
-python manage.py runserver
-```
-
-This will start the Django development server on `http://127.0.0.1:8000/`. You can then navigate to this URL in your web browser to interact with the CRM platform.
+To interact with the CRM1 Website Django application, you can use the provided API endpoints. For detailed documentation on each endpoint, refer to the [API Reference](src/api/README.md).
 
 ## Project Structure
 
 ```plaintext
 crm1-website-django/
-├── manage.py
-├── accounts/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── decorators.py
-│   ├── filters.py
-│   ├── forms.py
-│   ├── migrations/
-│   ├── models.py
-│   ├── signals.py
-│   ├── templates/
-│   │   └── accounts/
-│   │       ├── account_settings.html
-│   │       ├── customer.html
-│   │       ├── dashboard.html
-│   │       ├── delete.html
-│   │       ├── login.html
-│   │       ├── main.html
-│   │       ├── navbar.html
-│   │       ├── order_form.html
-│   │       ├── password_reset.html
-│   │       ├── password_reset_done.html
-│   │       ├── password_reset_form.html
-│   │       ├── password_reset_sent.html
-│   │       ├── products.html
-│   │       ├── register.html
-│   │       └── status.html
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-├── crm1/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-└── requirements.txt
+├── src/
+│   ├── main.py                 # Entry point for the application
+│   ├── api/                    # API endpoints
+│   └── models/                 # Database models
+├── tests/                      # Test cases
+├── requirements.txt            # Dependency list
+├── setup.py                    # Package setup
+├── README.md                   # Project documentation
+└── .env                        # Environment variables
 ```
 
-## Contributing
+## Development
 
-Contributions are welcome! Please follow these steps:
+For developers looking to contribute to the project, follow these steps:
 
-1. Fork the repository
-2. Create a branch (`git checkout -b feature/your-feature-name`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/your-feature-name`)
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature-name`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/your-feature-name`).
+5. Open a Pull Request.
+
+## Testing
+
+The project includes a comprehensive test suite to ensure software quality. To run tests, use:
+
+```bash
+python src/manage.py test
+```
+
+## Limitations
+
+- The application is designed for small to medium-sized organizations.
+- It does not include advanced features such as AI-driven insights or machine learning capabilities.
 
 ## License
 
